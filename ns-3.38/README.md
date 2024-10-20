@@ -113,7 +113,7 @@
 
 # 15. <mark>two-car-straight-mobility-client-server.cc</mark>
 
-### <ins>Description</ins>: *This .*
+### <ins>Description</ins>: *This scenario consists of two car nodes (CAR_VALUE). Using the constant velocity mobility model, the two nodes move together backward at a constant speed. The client graph (UDP Echo Client Throughput) shows the communication (time vs bytes/sec) of one car and the server graph (UDP Echo Server Throughput) represents the other car.*
 
 ![](two-car-straight-mobility-client-server.gif)
 
@@ -121,7 +121,7 @@
 
 # 16. <mark>two-node-circular-mobility.cc</mark>
 
-### <ins>Description</ins>: *This .*
+### <ins>Description</ins>: *This scenario consists of three nodes:  CAR_VALUE, QUADCOPTER_UAV_VALUE and CELL_TOWER_POLE_VALUE. Using the waypoint mobility model, the car and quadcopter rotate around the cell tower pole on the ground. The graph (UDP Echo Client Throughput) shows the communication (time vs bytes/sec).*
 
 ![](two-node-circular-mobility.gif)
 
@@ -137,7 +137,7 @@
 
 # 18. <mark>two-node-obstacle-server-connection-dip.cc</mark>
 
-### <ins>Description</ins>: *This .*
+### <ins>Description</ins>: *This scenario consists of three CAR_VALUE nodes. Using the constant velocity mobility model, two cars move at a constant speed with a stationary car in the middle. The stationary car which acts as an obstacle causes a dip in connectivity. The client graph (UDP Echo Client Throughput) shows the communication of the moving cars with the stationary one while the server graph (UDP Echo Server Throughput) represents the stationary car (time vs bytes/sec).*
 
 ![](two-node-obstacle-server-connection-dip.gif)
 
