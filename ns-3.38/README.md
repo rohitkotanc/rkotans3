@@ -1,7 +1,7 @@
 
 # 1. <mark>car-quadcopter-circle-tower-mobility.cc</mark>
 
-### <ins>Description</ins>: **This scenario consists of four nodes:  CAR_VALUE, QUADCOPTER_UAV_VALUE, CELL_TOWER_POLE_VALUE and CELL_TOWER_VALUE. Using the waypoint mobility model, the car and quadcopter rotate around the cell tower pole which is inside the cell tower. The graph (UDP Echo Client Throughput) shows the communication (time vs bytes/sec).*
+### <ins>Description</ins>: *This scenario consists of four nodes:  CAR_VALUE, QUADCOPTER_UAV_VALUE, CELL_TOWER_POLE_VALUE and CELL_TOWER_VALUE. Using the waypoint mobility model, the car and quadcopter rotate around the cell tower pole which is inside the cell tower. The graph (UDP Echo Client Throughput) shows the communication (time vs bytes/sec).*
 
 ![](car-quadcopter-circle-tower-mobility.gif)
 
@@ -17,7 +17,7 @@
 
 # 3. <mark>car-quadcopter-pole-circular-mobility.cc</mark>
 
-### <ins>Description</ins>: **This scenario consists of three nodes:  CAR_VALUE, QUADCOPTER_UAV_VALUE and CELL_TOWER_POLE_VALUE. Using the waypoint mobility model, the car and quadcopter rotate around the cell tower pole. The graph (UDP Echo Client Throughput) shows the communication (time vs bytes/sec).*
+### <ins>Description</ins>: *This scenario consists of three nodes:  CAR_VALUE, QUADCOPTER_UAV_VALUE and CELL_TOWER_POLE_VALUE. Using the waypoint mobility model, the car and quadcopter rotate around the cell tower pole. The graph (UDP Echo Client Throughput) shows the communication (time vs bytes/sec).*
 
 ![](car-quadcopter-pole-circular-mobility.gif)
 
