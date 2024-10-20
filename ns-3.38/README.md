@@ -145,7 +145,7 @@
 
 # 19. <mark>two-node-obstacle-server-connection-drop.cc</mark>
 
-### <ins>Description</ins>: *This .*
+### <ins>Description</ins>: *This scenario consists of three CAR_VALUE nodes. Using the constant velocity mobility model, two cars move at a constant speed with a stationary car on the left. The stationary car acting as server loses full connectivity with the right most car acting as client. The client graph (UDP Echo Client Throughput) shows the communication of the right most car with the stationary one while the server graph (UDP Echo Server Throughput) represents the stationary car (time vs bytes/sec).*
 
 ![](two-node-obstacle-server-connection-drop.gif)
 
@@ -153,7 +153,7 @@
 
 # 20. <mark>two-node-straight-mobility.cc</mark>
 
-### <ins>Description</ins>: *This .*
+### <ins>Description</ins>: *This scenario consists of two nodes:  SMARTPHONE_VALUE and SERVER_VALUE. Using the constant velocity mobility model, the two moving nodes communicate. The client graph (UDP Echo Client Throughput) shows the communication (time vs bytes/sec) of the moving nodes.*
 
 ![](two-node-straight-mobility.gif)
 
