@@ -89,7 +89,7 @@
 
 # 12. <mark>two-car-client-server-mobility.cc</mark>
 
-### <ins>Description</ins>: *This scenario consists of two car nodes:  SMARTPHONE_VALUE, ROUTER_VALUE and SERVER_VALUE. Using the constant velocity mobility model, the two nodes  move away at a constant speed. The client graph (UDP Echo Client Throughput) shows the communication (time vs bytes/sec) of one car and the server graph (UDP Echo Server Throughput) represents the other car.*
+### <ins>Description</ins>: *This scenario consists of two car nodes (CAR_VALUE). Using the constant velocity mobility model, the two nodes move away from each other side to side at a constant speed. The client graph (UDP Echo Client Throughput) shows the communication (time vs bytes/sec) of one car and the server graph (UDP Echo Server Throughput) represents the other car.*
 
 ![](two-car-client-server-mobility.gif)
 
@@ -97,7 +97,7 @@
 
 # 13. <mark>two-car-constant-connectivity-through-distance.cc</mark>
 
-### <ins>Description</ins>: *This .*
+### <ins>Description</ins>: *This scenario consists of two car nodes (CAR_VALUE). Using the constant velocity mobility model, the two nodes move away from each other forward and backward at a constant speed. The client graph (UDP Echo Client Throughput) shows the communication (time vs bytes/sec) of one car and the server graph (UDP Echo Server Throughput) represents the other car. The connectivity remains constant.*
 
 ![](two-car-constant-connectivity-through-distance.gif)
 
