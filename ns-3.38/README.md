@@ -105,7 +105,7 @@
 
 # 14. <mark>two-car-constant-connectivity-through-motion.cc</mark>
 
-### <ins>Description</ins>: *This .*
+### <ins>Description</ins>: *This scenario consists of two car nodes (CAR_VALUE). Using the constant velocity mobility model, the two nodes move together forward at a constant speed. The client graph (UDP Echo Client Throughput) shows the communication (time vs bytes/sec) of one car and the server graph (UDP Echo Server Throughput) represents the other car. The connectivity remains constant.*
 
 ![](two-car-constant-connectivity-through-motion.gif)
 
