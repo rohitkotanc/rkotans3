@@ -17,7 +17,7 @@
 
 # 3. <mark>car-quadcopter-pole-circular-mobility.cc</mark>
 
-### <ins>Description</ins>: *This scenario consists of three nodes:  CAR_VALUE, QUADCOPTER_UAV_VALUE and CELL_TOWER_POLE_VALUE. Using the waypoint mobility model, the car and quadcopter rotate around the cell tower pole. The graph (UDP Echo Client Throughput) shows the communication (time vs bytes/sec).
+### <ins>Description</ins>: This scenario consists of three nodes:  CAR_VALUE, QUADCOPTER_UAV_VALUE and CELL_TOWER_POLE_VALUE. Using the waypoint mobility model, the car and quadcopter rotate around the cell tower pole. The graph (UDP Echo Client Throughput) shows the communication (time vs bytes/sec).
 
 ![](car-quadcopter-pole-circular-mobility.gif)
 
@@ -25,7 +25,7 @@
 
 # 4. <mark>four-node-client.cc</mark>
 
-### <ins>Description</ins>: *This scenario consists of four nodes:  SMARTPHONE_VALUE, ROUTER_VALUE, SERVER_VALUE and CELL_TOWER_POLE_VALUE. There is no mobility in this example. The graph (UDP Echo Client Throughput) shows the communication (time vs bytes/sec).
+### <ins>Description</ins>: This scenario consists of four nodes:  SMARTPHONE_VALUE, ROUTER_VALUE, SERVER_VALUE and CELL_TOWER_POLE_VALUE. There is no mobility in this example. The graph (UDP Echo Client Throughput) shows the communication (time vs bytes/sec).
 
 ![](four-node-client.gif)
 
@@ -33,7 +33,7 @@
 
 # 5. <mark>intermediate-node-car-quadcopter-circular-mobility.cc</mark>
 
-### <ins>Description</ins>: *This .
+### <ins>Description</ins>: This scenario consists of three nodes:  CAR_VALUE, QUADCOPTER_UAV_VALUE and CELL_TOWER_POLE_VALUE. Using the waypoint mobility model, the car and quadcopter rotate around the cell tower pole. The graph (UDP Echo Client Throughput) shows the communication of the car which acts as an intermediate node between the cell tower pole and the quadcopter (time vs bytes/sec).
 
 ![](intermediate-node-car-quadcopter-circular-mobility.gif)
 
@@ -41,7 +41,7 @@
 
 # 6. <mark>ten-cars-circular-mobility.cc</mark>
 
-### <ins>Description</ins>: *This .
+### <ins>Description</ins>: This .
 
 ![](ten-cars-circular-mobility.gif)
 
@@ -57,7 +57,7 @@
 
 # 8. <mark>three-car-constant-connectivity.cc</mark>
 
-### <ins>Description</ins>: *This .
+### <ins>Description</ins>: This .
 
 ![](three-car-constant-connectivity.gif)
 
@@ -65,7 +65,7 @@
 
 # 9. <mark>three-node-client.cc</mark>
 
-### <ins>Description</ins>: *This .
+### <ins>Description</ins>: This .
 
 ![](three-node-client.gif)
 
@@ -73,7 +73,7 @@
 
 # 10. <mark>three-node-mobility.cc</mark>
 
-### <ins>Description</ins>: *This .
+### <ins>Description</ins>: This .
 
 ![](three-node-mobility.gif)
 
@@ -81,7 +81,7 @@
 
 # 11. <mark>three-node-random-walk.cc</mark>
 
-### <ins>Description</ins>: *This .
+### <ins>Description</ins>: This .
 
 ![](three-node-random-walk.gif)
 
@@ -89,7 +89,7 @@
 
 # 12. <mark>two-car-client-server-mobility.cc</mark>
 
-### <ins>Description</ins>: *This .
+### <ins>Description</ins>: This .
 
 ![](two-car-client-server-mobility.gif)
 
@@ -97,7 +97,7 @@
 
 # 13. <mark>two-car-constant-connectivity-through-distance.cc</mark>
 
-### <ins>Description</ins>: *This .
+### <ins>Description</ins>: This .
 
 ![](two-car-constant-connectivity-through-distance.gif)
 
@@ -105,7 +105,7 @@
 
 # 14. <mark>two-car-constant-connectivity-through-motion.cc</mark>
 
-### <ins>Description</ins>: *This .
+### <ins>Description</ins>: This .
 
 ![](two-car-constant-connectivity-through-motion.gif)
 
@@ -113,7 +113,7 @@
 
 # 15. <mark>two-car-straight-mobility-client-server.cc</mark>
 
-### <ins>Description</ins>: *This .
+### <ins>Description</ins>: This .
 
 ![](two-car-straight-mobility-client-server.gif)
 
@@ -121,7 +121,7 @@
 
 # 16. <mark>two-node-circular-mobility.cc</mark>
 
-### <ins>Description</ins>: *This .
+### <ins>Description</ins>: This .
 
 ![](two-node-circular-mobility.gif)
 
@@ -137,7 +137,7 @@
 
 # 18. <mark>two-node-obstacle-server-connection-dip.cc</mark>
 
-### <ins>Description</ins>: *This .
+### <ins>Description</ins>: This .
 
 ![](two-node-obstacle-server-connection-dip.gif)
 
@@ -145,7 +145,7 @@
 
 # 19. <mark>two-node-obstacle-server-connection-drop.cc</mark>
 
-### <ins>Description</ins>: *This .
+### <ins>Description</ins>: This .
 
 ![](two-node-obstacle-server-connection-drop.gif)
 
@@ -153,7 +153,7 @@
 
 # 20. <mark>two-node-straight-mobility.cc</mark>
 
-### <ins>Description</ins>: *This .
+### <ins>Description</ins>: This .
 
 ![](two-node-straight-mobility.gif)
 
