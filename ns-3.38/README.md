@@ -1,9 +1,9 @@
-
+       
 # 1. <mark>car-laptop-tower-straight-mobility.cc</mark>
 
 ### <ins>Description</ins>: *This scenario consists of four nodes:  CAR_VALUE, QUADCOPTER_UAV_VALUE, CELL_TOWER_POLE_VALUE and CELL_TOWER_VALUE. Using the waypoint mobility model, the car and quadcopter rotate around the cell tower pole which is inside the cell tower. The graph (UDP Echo Client Throughput) shows the communication (time vs bytes/sec).*
 
-![](car-laptop-tower-straight-mobility.gif)
+![](myexamples_gif/car-laptop-tower-straight-mobility.gif)
 
 ---
 
@@ -11,7 +11,7 @@
 
 ### <ins>Description</ins>: *TWO*
 
-![](car-quadcopter-circular-mobility.gif)
+![](myexamples_gif/car-quadcopter-circular-mobility.gif)
 
 ---
 
@@ -19,7 +19,7 @@
 
 ### <ins>Description</ins>: *THREE*
 
-![](car-quadcopter-different-speeds-circular-mobility.gif)
+![](myexamples_gif/car-quadcopter-different-speeds-circular-mobility.gif)
 
 ---
 
@@ -27,7 +27,7 @@
 
 ### <ins>Description</ins>: *FOUR*
 
-![](car-quadcopter-pole-straight-mobility.gif)
+![](myexamples_gif/car-quadcopter-pole-straight-mobility.gif)
 
 ---
 
@@ -35,7 +35,7 @@
 
 ### <ins>Description</ins>: *FIVE*
 
-![](four-node-client.gif)
+![](myexamples_gif/four-node-client.gif)
 
 ---
 
@@ -43,7 +43,7 @@
 
 ### <ins>Description</ins>: *SIX*
 
-![](ten-cars-circular-mobility-clientserver-graphs.gif)
+![](myexamples_gif/ten-cars-circular-mobility-clientserver-graphs.gif)
 
 ---
 
@@ -51,7 +51,7 @@
 
 ### <ins>Description</ins>: *SEVEN*
 
-![](ten-cars-circular-mobility.gif)
+![](myexamples_gif/ten-cars-circular-mobility.gif)
 
 ---
 
@@ -59,7 +59,7 @@
 
 ### <ins>Description</ins>: *EIGHT*
 
-![](ten-node-circular-mobility.gif)
+![](myexamples_gif/ten-node-circular-mobility.gif)
 
 ---
 
@@ -67,7 +67,7 @@
 
 ### <ins>Description</ins>: *NINE*
 
-![](three-car-constant-connectivity.gif)
+![](myexamples_gif/three-car-constant-connectivity.gif)
 
 ---
 
@@ -75,7 +75,7 @@
 
 ### <ins>Description</ins>: *TEN*
 
-![](three-node-car-tower-smartphone.gif)
+![](myexamples_gif/three-node-car-tower-smartphone.gif)
 
 ---
 
@@ -83,7 +83,7 @@
 
 ### <ins>Description</ins>: *ELEVEN*
 
-![](three-node-client.gif)
+![](myexamples_gif/three-node-client.gif)
 
 ---
 
@@ -91,7 +91,7 @@
 
 ### <ins>Description</ins>: *TWELVE*
 
-![](three-node-mobility.gif)
+![](myexamples_gif/three-node-mobility.gif)
 
 ---
 
@@ -99,7 +99,7 @@
 
 ### <ins>Description</ins>: *THIRTEEN*
 
-![](three-node-random-walk.gif)
+![](myexamples_gif/three-node-random-walk.gif)
 
 ---
 
@@ -107,7 +107,7 @@
 
 ### <ins>Description</ins>: *FOURTEEN*
 
-![](two-car-constant-connectivity-through-distance.gif)
+![](myexamples_gif/two-car-constant-connectivity-through-distance.gif)
 
 ---
 
@@ -115,7 +115,7 @@
 
 ### <ins>Description</ins>: *FIFTEEN*
 
-![](two-car-constant-connectivity-through-motion.gif)
+![](myexamples_gif/two-car-constant-connectivity-through-motion.gif)
 
 ---
 
@@ -123,7 +123,7 @@
 
 ### <ins>Description</ins>: *SIXTEEN*
 
-![](two-car-obstacle-server-connection-dip.gif)
+![](myexamples_gif/two-car-obstacle-server-connection-dip.gif)
 
 ---
 
@@ -131,7 +131,7 @@
 
 ### <ins>Description</ins>: *SEVENTEEN*
 
-![](two-car-obstacle-server-connection-lost.gif)
+![](myexamples_gif/two-car-obstacle-server-connection-lost.gif)
 
 ---
 
@@ -139,7 +139,7 @@
 
 ### <ins>Description</ins>: *EIGHTEEN*
 
-![](two-car-straight-mobility-client-server.gif)
+![](myexamples_gif/two-car-straight-mobility-client-server.gif)
 
 ---
 
@@ -147,7 +147,7 @@
 
 ### <ins>Description</ins>: *NINETEEN*
 
-![](two-node-client-server-connectivity.gif)
+![](myexamples_gif/two-node-client-server-connectivity.gif)
 
 ---
 
@@ -155,7 +155,7 @@
 
 ### <ins>Description</ins>: *TWENTY*
 
-![](two-node-straight-mobility.gif)
+![](myexamples_gif/two-node-straight-mobility.gif)
 
 ---
 
@@ -163,7 +163,7 @@
 
 ### <ins>Description</ins>: *TWENTY ONE*
 
-![](ten-cars-building-circular-mobility.gif)
+![](myexamples_gif/ten-cars-building-circular-mobility.gif)
 
 ---
 
@@ -171,7 +171,7 @@
 
 ### <ins>Description</ins>: *TWENTY TWO*
 
-![](smartphone-car-constant-connectivity-with-building.gif)
+![](myexamples_gif/smartphone-car-constant-connectivity-with-building.gif)
 
 ---
 
@@ -179,6 +179,6 @@
 
 ### <ins>Description</ins>: *TWENTY THREE*
 
-![](two-car-building-server-connection-dip.gif)
+![](myexamples_gif/two-car-building-server-connection-dip.gif)
 
 ---
