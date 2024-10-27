@@ -1,9 +1,9 @@
 ---
 
 - __The base folder is__
-- The example folder is
-- The json folder is
-- The gif folder is
+- __The example folder is__
+- __The json folder is__
+- __The gif folder is__
 
 ---
 
