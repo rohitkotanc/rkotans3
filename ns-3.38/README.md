@@ -1,6 +1,6 @@
 
 
-## EXAMPLES:
+## <ins>EXAMPLES</ins>:
 
 # 1. <mark>car-laptop-pole-circular-mobility.cc</mark>
 
