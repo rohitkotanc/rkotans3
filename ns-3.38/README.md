@@ -1,7 +1,7 @@
 ---
 
-- **The base folder is
-- *The example folder is
+- __The base folder is__
+- The example folder is
 - The json folder is
 - The gif folder is
 
