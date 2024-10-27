@@ -1,9 +1,9 @@
 ---
 
--The base folder is
--The example folder is
--The json folder is
--The gif folder is
+- The base folder is\
+- The example folder is\
+- The json folder is\
+- The gif folder is\
 
 ---
 
