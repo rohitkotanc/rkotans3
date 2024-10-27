@@ -1,5 +1,6 @@
- <br>
-<blockquote></blockquote>
+
+model, the car and quadcopter rotate around the cell tower pole at the same speed.
+<b==================================================================================/b>
 
 ---
 
