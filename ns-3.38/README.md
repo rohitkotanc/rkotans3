@@ -1,6 +1,6 @@
 ---
 
-- #### __The base folder is__ *rkotans3/ns-3.38*
+- #### __The base folder is__ *<ins>rkotans3/ns-3.38</ins>*
 - #### __The example folder is__
 - #### __The json folder is__
 - #### __The gif folder is__
