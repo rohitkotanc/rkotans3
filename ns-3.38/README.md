@@ -185,3 +185,18 @@
 
 ---
 
+# 23. <mark>two-car-building-proper-connection-dip.cc</mark>
+
+### <ins>Description</ins>: *This scenario consists of two nodes each CAR_VALUE. Using the constant velocity mobility model, the nodes move at a constant speed. The graph (UDP Echo Client Throughput) shows the communication between the two cars (time vs bytes/sec). As the cars approach the building, the connectivity slightly dips and then goes back up oncethey pass the building.*
+
+![](myexamples_gif/two-car-building-proper-connection-dip.gif)
+
+---
+
+# 24. <mark>two-car-double-building-connectivity.cc</mark>
+
+### <ins>Description</ins>: *This scenario consists of two nodes each CAR_VALUE. Using the constant velocity mobility model, the nodes move at a constant speed. The graph (UDP Echo Client Throughput) shows the communication between the two cars (time vs bytes/sec). As the cars approach the building, the connectivity gets completely cut and then goes back up once they pass the building. The same repeats for the second building.*
+
+![](myexamples_gif/two-car-double-building-connectivity.gif)
+
+---
