@@ -9,23 +9,23 @@
 
 ## <ins>EXAMPLES</ins>:
 
-# 1. <mark>car-laptop-pole-circular-mobility.cc</mark>
+<!-- # 1. <mark>car-laptop-pole-circular-mobility.cc</mark>
 
 ### <ins>Description</ins>: *This scenario consists of three nodes: CAR_VALUE, LAPTOP_VALUE, CELL_TOWER_POLE_VALUE. Using the waypoint mobility model, the car and laptop rotate around the cell tower pole. The graph (UDP Echo Client Throughput) shows the communication (time vs bytes/sec).*
 
-![](myexamples_gif/car-laptop-pole-circular-mobility.gif)
+![](myexamples_gif/car-laptop-pole-circular-mobility.gif) -->
 
 ---
 
-# 2. <mark>car-quadcopter-circular-mobility.cc</mark>
+<!-- # 2. <mark>car-quadcopter-circular-mobility.cc</mark>
 
 ### <ins>Description</ins>: *This scenario consists of three nodes: CAR_VALUE, QUADCOPTER_UAV_VALUE, CELL_TOWER_POLE_VALUE. Using the waypoint mobility model, the car and quadcopter rotate around the cell tower pole at the same speed. The graph (UDP Echo Client Throughput) shows the communication (time vs bytes/sec).*
 
-![](myexamples_gif/car-quadcopter-circular-mobility.gif)
+![](myexamples_gif/car-quadcopter-circular-mobility.gif) -->
 
 ---
 
-# 3. <mark>car-quadcopter-different-speeds-circular-mobility.cc</mark>
+# 1. <mark>Car-quadcopter-different-speeds-circular-mobility.cc</mark>
 
 ### <ins>Description</ins>: *This scenario consists of three nodes: CAR_VALUE, QUADCOPTER_UAV_VALUE, CELL_TOWER_POLE_VALUE. Using the waypoint mobility model, the car and quadcopter rotate around the cell tower pole at different speeds. The graph (UDP Echo Client Throughput) shows the communication (time vs bytes/sec).*
 
@@ -33,7 +33,7 @@
 
 ---
 
-# 4. <mark>car-quadcopter-pole-straight-mobility.cc</mark>
+# 2. <mark>Car-quadcopter-pole-straight-mobility.cc</mark>
 
 ### <ins>Description</ins>: *This scenario consists of three nodes: CAR_VALUE, QUADCOPTER_UAV_VALUE, CELL_TOWER_POLE_VALUE. Using the constant velocity mobility model, the car and quadcopter rotate (both on the ground) around the cell tower pole in opposite directions. The graph (UDP Echo Client Throughput) shows the communication (time vs bytes/sec).*
 
@@ -41,7 +41,7 @@
 
 ---
 
-# 5. <mark>four-node-client.cc</mark>
+# 3. <mark>four-node-client.cc</mark>
 
 ### <ins>Description</ins>: *This scenario consists of four nodes: SERVER_VALUE, ROUTER_VALUE, SMARTPHONE_VALUE, CELL_TOWER_POLE_VALUE. The graph (UDP Echo Client Throughput) shows the communication (time vs bytes/sec).*
 
@@ -49,7 +49,7 @@
 
 ---
 
-# 6. <mark>smartphone-car-constant-connectivity-with-building.cc</mark>
+# 4. <mark>smartphone-car-constant-connectivity-with-building.cc</mark>
 
 ### <ins>Description</ins>: *This scenario consists of three nodes: CAR_VALUE, SMARTPHONE_VALUE, CELL_TOWER_POLE_VALUE. Using the constant velocity mobility model, the goes in a straight line away from the cell tower pole with no impact on communication. The graphs (UDP Echo Client & Server Throughput) show the communication (time vs bytes/sec).*
 
@@ -57,23 +57,23 @@
 
 ---
 
-# 7. <mark>ten-cars-building-circular-mobility.cc</mark>
+<!-- # 7. <mark>ten-cars-building-circular-mobility.cc</mark>
 
 ### <ins>Description</ins>: *This scenario consists of multiple nodes: CAR_VALUE, BUILDING. Using the constant velocity mobility model, ten cars go in a circular path around the building with no impact on communication. The graph (UDP Echo Client Throughput) shows the communication (time vs bytes/sec).*
 
-![](myexamples_gif/ten-cars-building-circular-mobility.gif)
+![](myexamples_gif/ten-cars-building-circular-mobility.gif) -->
 
 ---
 
-# 8. <mark>ten-cars-circular-mobility.cc</mark>
+<!-- # 8. <mark>ten-cars-circular-mobility.cc</mark>
 
 ### <ins>Description</ins>: *This scenario consists of multiple nodes: CAR_VALUE, CELL_TOWER_POLE_VALUE. Using the constant velocity mobility model, ten cars go in a circular path around the cell tower pole with no impact on communication. The graph (UDP Echo Client Throughput) shows the communication (time vs bytes/sec).*
 
-![](myexamples_gif/ten-cars-circular-mobility.gif)
+![](myexamples_gif/ten-cars-circular-mobility.gif) -->
 
 ---
 
-# 9. <mark>ten-node-circular-mobility.cc</mark>
+# 5. <mark>ten-node-circular-mobility.cc</mark>
 
 ### <ins>Description</ins>: *This scenario consists of multiple nodes. Using the constant velocity mobility model, ten nodes go in a circular path around the stationary node with no impact on communication. The graph (UDP Echo Client Throughput) shows the communication (time vs bytes/sec).*
 
@@ -81,7 +81,7 @@
 
 ---
 
-# 10. <mark>three-car-constant-connectivity.cc</mark>
+# 6. <mark>three-car-constant-connectivity.cc</mark>
 
 ### <ins>Description</ins>: *This scenario consists of three nodes each a CAR_VALUE. Using the constant velocity mobility model, two cars move at a constant speed on wither side of a stationary car keeping communication between all cars consistent. The graphs (UDP Echo Client & Server Throughput) show the communication (time vs bytes/sec).*
 
@@ -89,7 +89,7 @@
 
 ---
 
-# 11. <mark>three-node-car-tower-smartphone.cc</mark>
+# 7. <mark>three-node-car-tower-smartphone.cc</mark>
 
 ### <ins>Description</ins>: *This scenario consists of three nodes: CAR_VALUE, CELL_TOWER_VALUE, SMARTPHONE_VALUE. Using the constant velocity mobility model, the car moves at a constant speed away from the tower keeping communication. The graphs (UDP Echo Client & Server Throughput) show the communication (time vs bytes/sec).*
 
@@ -97,15 +97,15 @@
 
 ---
 
-# 12. <mark>three-node-client.cc</mark>
+<!-- # 12. <mark>three-node-client.cc</mark>
 
 ### <ins>Description</ins>: *This scenario consists of three nodes: SERVER_VALUE, ROUTER_VALUE, SMARTPHONE_VALUE. The graph (UDP Echo Client Throughput) shows the communication (time vs bytes/sec).*
 
 ![](myexamples_gif/three-node-client.gif)
 
----
+--- -->
 
-# 13. <mark>three-node-mobility.cc</mark>
+# 8. <mark>three-node-mobility.cc</mark>
 
 ### <ins>Description</ins>: *This scenario consists of three nodes: SERVER_VALUE, ROUTER_VALUE, SMARTPHONE_VALUE. Using the constant velocity mobility model, the three nodesmove in a straight line. The graph (UDP Echo Client Throughput) shows the communication (time vs bytes/sec).*
 
@@ -113,7 +113,7 @@
 
 ---
 
-# 14. <mark>three-node-random-walk.cc</mark>
+# 9. <mark>three-node-random-walk.cc</mark>
 
 ### <ins>Description</ins>: *This scenario consists of three nodes: SERVER_VALUE, ROUTER_VALUE, SMARTPHONE_VALUE. Using the random walk mobility model, the three nodesmove in a straight line. The graph (UDP Echo Client Throughput) shows the communication (time vs bytes/sec).*
 
@@ -121,15 +121,15 @@
 
 ---
 
-# 15. <mark>two-car-building-server-connection-dip.cc</mark>
+<!-- # 15. <mark>two-car-building-server-connection-dip.cc</mark>
 
 ### <ins>Description</ins>: *This scenario consists of two nodes each a CAR_VALUE. Using the constant velocity mobility model, the cars move at a constant speed on either side of the building keeping communication. There is a communication dip during the time the building acts as an obstacle. The graphs (UDP Echo Client & Server Throughput) show the communication (time vs bytes/sec).*
 
 ![](myexamples_gif/two-car-building-server-connection-dip.gif)
 
----
+--- -->
 
-# 16. <mark>two-car-constant-connectivity-through-distance.cc</mark>
+# 10. <mark>two-car-constant-connectivity-through-distance.cc</mark>
 
 ### <ins>Description</ins>: *This scenario consists of two nodes each a CAR_VALUE. Using the constant velocity mobility model, the cars move at a constant speed away from each other keeping communication. The graphs (UDP Echo Client & Server Throughput) show the communication (time vs bytes/sec).*
 
@@ -137,7 +137,7 @@
 
 ---
 
-# 17. <mark>two-car-constant-connectivity-through-motion.cc</mark>
+# 11. <mark>two-car-constant-connectivity-through-motion.cc</mark>
 
 ### <ins>Description</ins>: *This scenario consists of two nodes each a CAR_VALUE. Using the constant velocity mobility model, the cars move at a constant speed together keeping communication. The graphs (UDP Echo Client & Server Throughput) show the communication (time vs bytes/sec).*
 
@@ -145,7 +145,7 @@
 
 ---
 
-# 18. <mark>two-car-obstacle-server-connection-dip.cc</mark>
+# 12. <mark>two-car-obstacle-server-connection-dip.cc</mark>
 
 ### <ins>Description</ins>: *This scenario consists of two nodes each a CAR_VALUE. Using the constant velocity mobility model, the cars move at a constant speed together keeping communication till they pass the stationary car. The graphs (UDP Echo Client & Server Throughput) show the communication (time vs bytes/sec).*
 
@@ -153,7 +153,7 @@
 
 ---
 
-# 19. <mark>two-car-obstacle-server-connection-lost.cc</mark>
+# 13. <mark>two-car-obstacle-server-connection-lost.cc</mark>
 
 ### <ins>Description</ins>: *This scenario consists of three nodes each a CAR_VALUE. Using the constant velocity mobility model, one of the cars moves at a constant speed together keeping communication till the third car passes in between interrupting the client-server communication. The graphs (UDP Echo Client & Server Throughput) show the communication (time vs bytes/sec).*
 
@@ -161,31 +161,31 @@
 
 ---
 
-# 20. <mark>two-car-straight-mobility-client-server.cc</mark>
+<!-- # 20. <mark>two-car-straight-mobility-client-server.cc</mark>
 
 ### <ins>Description</ins>: *This scenario consists of two nodes each a CAR_VALUE. Using the constant velocity mobility model, the cars move at a constant speed away from each other keeping communication. The graphs (UDP Echo Client & Server Throughput) show the communication (time vs bytes/sec).*
 
 ![](myexamples_gif/two-car-straight-mobility-client-server.gif)
 
----
+--- -->
 
-# 21. <mark>two-node-client-server-connectivity.cc</mark>
+<!-- # 21. <mark>two-node-client-server-connectivity.cc</mark>
 
 ### <ins>Description</ins>: *This scenario consists of two nodes: SERVER_VALUE, SMARTPHONE_VALUE. The graphs (UDP Echo Client & Server Throughput) show the communication (time vs bytes/sec).*
 
 ![](myexamples_gif/two-node-client-server-connectivity.gif)
 
----
+--- -->
 
-# 22. <mark>two-node-straight-mobility.cc</mark>
+<!-- # 22. <mark>two-node-straight-mobility.cc</mark>
 
 ### <ins>Description</ins>: *This scenario consists of two nodes: SERVER_VALUE, SMARTPHONE_VALUE. Using the constant velocity mobility model, the nodes move constantly. The graph (UDP Echo Client Throughput) shows the communication (time vs bytes/sec).*
 
 ![](myexamples_gif/two-node-straight-mobility.gif)
 
----
+--- -->
 
-# 23. <mark>two-car-building-proper-connection-dip.cc</mark>
+# 14. <mark>two-car-building-proper-connection-dip.cc</mark>
 
 ### <ins>Description</ins>: *This scenario consists of two nodes each CAR_VALUE. Using the constant velocity mobility model, the nodes move at a constant speed. The graph (UDP Echo Client Throughput) shows the communication between the two cars (time vs bytes/sec). As the cars approach the building, the connectivity slightly dips and then goes back up oncethey pass the building.*
 
@@ -193,7 +193,7 @@
 
 ---
 
-# 24. <mark>two-car-double-building-connectivity.cc</mark>
+# 15. <mark>two-car-double-building-connectivity.cc</mark>
 
 ### <ins>Description</ins>: *This scenario consists of two nodes each CAR_VALUE. Using the constant velocity mobility model, the nodes move at a constant speed. The graph (UDP Echo Client Throughput) shows the communication between the two cars (time vs bytes/sec). As the cars approach the building, the connectivity gets completely cut and then goes back up once they pass the building. The same repeats for the second building.*
 
