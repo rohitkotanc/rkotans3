@@ -200,3 +200,7 @@
 ![](myexamples_gif/two-car-double-building-connectivity.gif)
 
 ---
+
+# Acknoledgement
+
+### Rohit Kota and Yuchen Liu (North Carolina State University, USA)
