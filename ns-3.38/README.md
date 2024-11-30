@@ -201,6 +201,6 @@
 
 ---
 
-# Acknoledgement
+# Repo Maintainers
 
 ### Rohit Kota and Yuchen Liu (North Carolina State University, USA)
