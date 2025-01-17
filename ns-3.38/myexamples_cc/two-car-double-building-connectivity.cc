@@ -48,8 +48,8 @@ int main(int argc, char* argv[])
 
     MobilityHelper mobility;
     Ptr<ListPositionAllocator> positionAlloc = CreateObject<ListPositionAllocator>();
-    positionAlloc->Add(Vector3D(25.0, 5.0, 0.0));
-    positionAlloc->Add(Vector3D(5.0, 5.0, 0.0));
+    positionAlloc->Add(Vector3D(55.0, 5.0, 0.0));
+    positionAlloc->Add(Vector3D(-25.0, 5.0, 0.0));
     mobility.SetPositionAllocator(positionAlloc);
     mobility.SetMobilityModel("ns3::ConstantVelocityMobilityModel");
     mobility.Install(nodes);
