@@ -91,10 +91,10 @@ int main(int argc, char* argv[])
     netDevices.Get(0)->SetAttribute("ReceiveErrorModel", PointerValue(clientErrorModel));
     netDevices.Get(1)->SetAttribute("ReceiveErrorModel", PointerValue(serverErrorModel));
 
-    Simulator::Schedule(Seconds(3.0), &DropConnectivity, clientErrorModel, serverErrorModel);
-    Simulator::Schedule(Seconds(4.0), &RestoreConnectivity, clientErrorModel, serverErrorModel);
-    Simulator::Schedule(Seconds(15.0), &DropConnectivity, clientErrorModel, serverErrorModel);
-    Simulator::Schedule(Seconds(16.0), &RestoreConnectivity, clientErrorModel, serverErrorModel);
+    Simulator::Schedule(Seconds(5.0), &DropConnectivity, clientErrorModel, serverErrorModel);
+    Simulator::Schedule(Seconds(6.0), &RestoreConnectivity, clientErrorModel, serverErrorModel);
+    Simulator::Schedule(Seconds(17.0), &DropConnectivity, clientErrorModel, serverErrorModel);
+    Simulator::Schedule(Seconds(18.0), &RestoreConnectivity, clientErrorModel, serverErrorModel);
 
     Ptr<netsimulyzer::Orchestrator> orchestrator = CreateObject<netsimulyzer::Orchestrator>(outputFileName);
     orchestrator->SetTimeStep(MilliSeconds(100), Time::MS);
