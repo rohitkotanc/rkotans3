@@ -200,3 +200,19 @@
 ![](myexamples_gif/two-car-double-building-connectivity.gif)
 
 ---
+
+# 25. <mark>two-car-fifteen-building-connectivity.cc</mark>
+
+### <ins>Description</ins>: *This scenario consists of two nodes each CAR_VALUE. Using the constant velocity mobility model, the nodes move at a constant speed. The graph (UDP Echo Client Throughput) shows the communication between the two cars (time vs bytes/sec). As the cars approach the buildings, the connectivity gets completely cut and then goes back up once they pass the building. The same repeats for each building.*
+
+![](myexamples_gif/two-car-fifteen-building-connectivity.gif)
+
+---
+
+# 26. <mark>two-car-uav-fifteen-building-connectivity.cc</mark>
+
+### <ins>Description</ins>: *This scenario consists of three nodes, two CAR_VALUE and one QUADCOPTER_UAV_VALUE. Using the constant velocity mobility model, the nodes move at a constant speed. There are three graphs. The UDP Echo Car1 Client Throughput (RX) graph shows the connectivity between the first car and the UAV. The UDP Echo Car2 Client Throughput (RX) graph shows the connectivity between the second car and the UAV. The UDP Echo Server Throughput (RX) graph shows the server (UAV) communicating with both of the cars. The connectivity of each graph drops as the server encounters a building blocking its connectivity with both cars.*
+
+![](myexamples_gif/two-car-uav-fifteen-building-connectivity.gif)
+
+---
