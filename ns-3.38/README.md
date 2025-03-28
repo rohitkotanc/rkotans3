@@ -216,3 +216,9 @@
 ![](myexamples_gif/two-car-uav-fifteen-building-connectivity.gif)
 
 ---
+
+# 27. <mark>car-quadcopter-circular-motion-connectivity.cc</mark>
+
+### <ins>Description</ins>: *This scenario consists of three nodes: CAR_VALUE, QUADCOPTER_UAV_VALUE, CELL_TOWER_POLE_VALUE. Using the waypoint mobility model, the car and quadcopter rotate around the cell tower pole at the same speed. The Car Client graph shows the communication between the car and the cell tower pole, the Quadcopter Client graph shows the communication between the UAV and the cell tower pole. The server is the cell tower pole value which shows the communication of the cell tower pole with the clients.*
+
+---
