@@ -5,7 +5,6 @@
 #include <ns3/netsimulyzer-module.h>
 #include <ns3/network-module.h>
 #include <ns3/point-to-point-module.h>
-#include <ns3/netanim-module.h>
 #include <ns3/buildings-module.h>
 #include <iostream>
 
@@ -16,40 +15,37 @@ void WriteThroughput(Ptr<netsimulyzer::ThroughputSink> sink, Ptr<const Packet> p
     sink->AddPacket(packet);
 }
 
-void CheckCarProximity(Ptr<NetDevice> clientDevice, Ptr<NetDevice> serverDevice, Ptr<ConstantVelocityMobilityModel> carMobility, Ptr<MobilityModel> poleMobility, double thresholdDistance)
+double currentErrorRate = 0.0;
+
+void IncreasePacketLoss(Ptr<RateErrorModel> errorModel, double stepLoss, double maxLoss, double stopTime)
 {
-    Vector carPosition = carMobility->GetPosition();
-    Vector polePosition = poleMobility->GetPosition();
-    double distance = CalculateDistance(carPosition, polePosition);
+    double currentTime = Simulator::Now().GetSeconds();
 
-    if (distance < thresholdDistance)
+    if (currentTime >= stopTime)
     {
-        Ptr<PointToPointNetDevice> clientP2PDevice = DynamicCast<PointToPointNetDevice>(clientDevice);
-        Ptr<PointToPointNetDevice> serverP2PDevice = DynamicCast<PointToPointNetDevice>(serverDevice);
-
-        clientP2PDevice->GetChannel()->SetAttribute("Delay", TimeValue(MilliSeconds(1)));
-        serverP2PDevice->GetChannel()->SetAttribute("Delay", TimeValue(MilliSeconds(1)));
-
-        std::cout << "Connectivity spiked at: " << Simulator::Now().GetSeconds() << " seconds. Distance: " << distance << std::endl;
-    }
-    else
-    {
-        Ptr<PointToPointNetDevice> clientP2PDevice = DynamicCast<PointToPointNetDevice>(clientDevice);
-        Ptr<PointToPointNetDevice> serverP2PDevice = DynamicCast<PointToPointNetDevice>(serverDevice);
-
-        clientP2PDevice->GetChannel()->SetAttribute("Delay", TimeValue(MilliSeconds(100)));
-        serverP2PDevice->GetChannel()->SetAttribute("Delay", TimeValue(MilliSeconds(100)));
-
-        std::cout << "Default connectivity at: " << Simulator::Now().GetSeconds() << " seconds. Distance: " << distance << std::endl;
+        std::cout << "Maximum packet loss reached at " << currentTime << "s. Packet loss: " << maxLoss * 100 << "%\n";
+        return;
     }
 
-    Simulator::Schedule(Seconds(0.1), &CheckCarProximity, clientDevice, serverDevice, carMobility, poleMobility, thresholdDistance);
+    currentErrorRate = std::min(maxLoss, currentErrorRate + stepLoss);
+    errorModel->SetAttribute("ErrorRate", DoubleValue(currentErrorRate));
+
+    std::cout << "[DEBUG] Time: " << currentTime << "s | Packet Loss: " << currentErrorRate * 100 << "%\n";
+
+    Simulator::Schedule(Seconds(0.5), &IncreasePacketLoss, errorModel, stepLoss, maxLoss, stopTime);
+}
+
+void RestoreConnectivity(Ptr<RateErrorModel> errorModel)
+{
+    errorModel->SetAttribute("ErrorRate", DoubleValue(0.0));
+    currentErrorRate = 0.0;
+    std::cout << "[DEBUG] Connectivity restored at: " << Simulator::Now().GetSeconds() << "s.\n";
 }
 
 int main(int argc, char* argv[])
 {
     double durationUser = 20.0;
-    std::string outputFileName = "smartphone-car-constant-connectivity-with-building.json"; 
+    std::string outputFileName = "smartphone-car-constant-connectivity-with-building.json";
 
     CommandLine cmd(__FILE__);
     cmd.AddValue("outputFileName", "The name of the file to write the NetSimulyzer trace info", outputFileName);
@@ -80,8 +76,7 @@ int main(int argc, char* argv[])
     Ptr<netsimulyzer::Orchestrator> orchestrator = CreateObject<netsimulyzer::Orchestrator>(outputFileName);
     orchestrator->SetTimeStep(MilliSeconds(100), Time::MS);
     orchestrator->SetAttribute("PollMobility", BooleanValue(true));
-
-    Ptr<Building> building = CreateObject<Building>();
+ Ptr<Building> building = CreateObject<Building>();
     building->SetBoundaries(Box(60.0, 70.0, 0.0, 10.0, 0.0, 20.0));
     building->SetBuildingType(Building::Residential);
     building->SetExtWallsType(Building::ConcreteWithWindows);
@@ -94,6 +89,7 @@ int main(int argc, char* argv[])
 
     netsimulyzer::BuildingConfigurationHelper buildingHelper(orchestrator);
     buildingHelper.Install(buildingContainer);
+
 
     BuildingsHelper::Install(nodes);
 
@@ -123,10 +119,24 @@ int main(int argc, char* argv[])
     echoClient.SetAttribute("PacketSize", UintegerValue(1024));
 
     ApplicationContainer clientApp = echoClient.Install(nodes.Get(0));
-    clientApp.Start(Seconds(2.0));
-    clientApp.Stop(duration - Seconds(1.0));
+clientApp.Start(Seconds(2.0));
+    clientApp.Stop(Seconds(5.0));  
 
-    Simulator::Schedule(Seconds(2.0), &CheckCarProximity, netDevices.Get(0), netDevices.Get(1), nodes.Get(0)->GetObject<ConstantVelocityMobilityModel>(), nodes.Get(2)->GetObject<MobilityModel>(), 5.0);
+    Ptr<RateErrorModel> errorModelClient = CreateObject<RateErrorModel>();
+    Ptr<RateErrorModel> errorModelServer = CreateObject<RateErrorModel>();
+
+    errorModelClient->SetAttribute("ErrorRate", DoubleValue(0.0));
+    errorModelServer->SetAttribute("ErrorRate", DoubleValue(0.0));
+
+    netDevices.Get(0)->SetAttribute("ReceiveErrorModel", PointerValue(errorModelClient));
+    netDevices.Get(1)->SetAttribute("ReceiveErrorModel", PointerValue(errorModelServer));
+
+    double stepLoss = 0.05;
+    double maxLoss = 1.0;
+    double degradationDuration = 5.0;
+
+    Simulator::Schedule(Seconds(5.0), &IncreasePacketLoss, errorModelClient, stepLoss, maxLoss, 5.0 + degradationDuration);
+    Simulator::Schedule(Seconds(5.0), &IncreasePacketLoss, errorModelServer, stepLoss, maxLoss, 5.0 + degradationDuration);
 
     netsimulyzer::NodeConfigurationHelper nodeHelper(orchestrator);
 
@@ -144,12 +154,10 @@ int main(int argc, char* argv[])
 
     Ptr<netsimulyzer::ThroughputSink> clientThroughput = CreateObject<netsimulyzer::ThroughputSink>(orchestrator, "UDP Echo Client Throughput (TX)");
     clientThroughput->GetSeries()->SetAttribute("Color", netsimulyzer::BLUE_VALUE);
-    
     clientApp.Get(0)->TraceConnectWithoutContext("Tx", MakeBoundCallback(&WriteThroughput, clientThroughput));
 
     Ptr<netsimulyzer::ThroughputSink> serverThroughput = CreateObject<netsimulyzer::ThroughputSink>(orchestrator, "UDP Echo Server Throughput (RX)");
     serverThroughput->GetSeries()->SetAttribute("Color", netsimulyzer::RED_VALUE);
-    
     serverApp.Get(0)->TraceConnectWithoutContext("Rx", MakeBoundCallback(&WriteThroughput, serverThroughput));
 
     Simulator::Stop(duration);
@@ -158,5 +166,6 @@ int main(int argc, char* argv[])
 
     return 0;
 }
+
 
 
