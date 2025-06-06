@@ -11,11 +11,6 @@
 
 using namespace ns3;
 
-void WriteServerThroughput(Ptr<const Packet> packet)
-{
-    NS_LOG_UNCOND("Packet received by server, adding to throughput sink.");
-}
-
 int main(int argc, char* argv[])
 {
     double durationUser = 20.0;
@@ -28,8 +23,6 @@ int main(int argc, char* argv[])
 
     NS_ABORT_MSG_IF(durationUser < 3.0, "Scenario must be at least three seconds long");
     const auto duration = Seconds(durationUser);
-
-    NS_ABORT_MSG_IF(outputFileName.empty(), "`outputFileName` must not be empty");
 
     NodeContainer nodes;
     nodes.Create(11); 
@@ -44,75 +37,63 @@ int main(int argc, char* argv[])
     double speeds[] = {1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0};
     int numWaypoints = 72;
 
+    int closestNodeIndex = 1;
+    int farthestNodeIndex = 1;
+
     for (int j = 1; j <= 10; ++j) {
-        Ptr<WaypointMobilityModel> carMobility = nodes.Get(j)->GetObject<WaypointMobilityModel>();
+        Ptr<WaypointMobilityModel> mobilityModel = nodes.Get(j)->GetObject<WaypointMobilityModel>();
         for (int i = 0; i < numWaypoints; ++i) {
             double angle = 2 * M_PI * i / numWaypoints;
             double x = radii[j - 1] * cos(angle);
             double y = -radii[j - 1] * sin(angle);
             double time = i * (2 * M_PI * radii[j - 1] / speeds[j - 1]) / numWaypoints;
-            carMobility->AddWaypoint(Waypoint(Seconds(time), Vector(x, y, 0.0)));
+            mobilityModel->AddWaypoint(Waypoint(Seconds(time), Vector(x, y, 0.0)));
         }
+
+        if (radii[j - 1] < radii[closestNodeIndex - 1]) closestNodeIndex = j;
+        if (radii[j - 1] > radii[farthestNodeIndex - 1]) farthestNodeIndex = j;
     }
 
     PointToPointHelper pointToPoint;
     pointToPoint.SetDeviceAttribute("DataRate", StringValue("100Mbps"));
     pointToPoint.SetChannelAttribute("Delay", StringValue("0ms"));
 
-    std::vector<NetDeviceContainer> netDevices;
-    for (int i = 0; i < 10; ++i) {
-        netDevices.push_back(pointToPoint.Install(nodes.Get(i + 1), nodes.Get(0)));
-    }
+    NetDeviceContainer device = pointToPoint.Install(nodes.Get(closestNodeIndex), nodes.Get(farthestNodeIndex));
 
     InternetStackHelper stack;
     stack.Install(nodes);
 
     Ipv4AddressHelper address;
-    for (size_t i = 0; i < netDevices.size(); ++i) {
-        std::string base = "10.1." + std::to_string(i + 1) + ".0";
-        address.SetBase(base.c_str(), "255.255.255.0");
-        address.Assign(netDevices[i]);
-    }
+    address.SetBase("10.1.1.0", "255.255.255.0");
+    Ipv4InterfaceContainer interfaces = address.Assign(device);
 
-    const auto echoPort = 9u;
-    UdpEchoServerHelper echoServer{echoPort};
-
-    auto serverApp = echoServer.Install(nodes.Get(1u));
+    const uint16_t echoPort = 9;
+    UdpEchoServerHelper echoServer(echoPort);
+    ApplicationContainer serverApp = echoServer.Install(nodes.Get(farthestNodeIndex));
     serverApp.Start(Seconds(1.0));
     serverApp.Stop(duration - Seconds(1.0));
 
-    UdpEchoClientHelper echoClient(address.NewAddress(), echoPort);
-    echoClient.SetAttribute("MaxPackets", UintegerValue(10'000u));
-    echoClient.SetAttribute("Interval", TimeValue(Seconds(2.0)));
-    echoClient.SetAttribute("PacketSize", UintegerValue(1024u));
+    UdpEchoClientHelper echoClient(interfaces.GetAddress(1), echoPort);
+    echoClient.SetAttribute("MaxPackets", UintegerValue(100000));
+    echoClient.SetAttribute("Interval", TimeValue(MilliSeconds(100)));
+    echoClient.SetAttribute("PacketSize", UintegerValue(1024));
 
-    auto clientApp = echoClient.Install(nodes.Get(0u));
+    ApplicationContainer clientApp = echoClient.Install(nodes.Get(closestNodeIndex));
     clientApp.Start(Seconds(2.0));
     clientApp.Stop(duration - Seconds(1.0));
 
-    auto orchestrator = CreateObject<netsimulyzer::Orchestrator>(outputFileName);
+    Ptr<netsimulyzer::Orchestrator> orchestrator = CreateObject<netsimulyzer::Orchestrator>(outputFileName);
     orchestrator->SetTimeStep(MilliSeconds(100), Time::MS);
     orchestrator->SetAttribute("PollMobility", BooleanValue(true));
 
-    netsimulyzer::NodeConfigurationHelper nodeHelper{orchestrator};
+    netsimulyzer::NodeConfigurationHelper nodeHelper(orchestrator);
 
-    std::vector<std::pair<ns3::netsimulyzer::Color3, ns3::StringValue>> nodeDetails = {
-        std::make_pair(ns3::netsimulyzer::Color3(128, 128, 128), ns3::StringValue("")),
-        std::make_pair(ns3::netsimulyzer::Color3(255, 0, 0), ns3::StringValue(netsimulyzer::models::CAR_VALUE)),
-        std::make_pair(ns3::netsimulyzer::Color3(0, 0, 255), ns3::StringValue(netsimulyzer::models::CAR_VALUE)),
-        std::make_pair(ns3::netsimulyzer::Color3(0, 255, 0), ns3::StringValue(netsimulyzer::models::CAR_VALUE)),
-        std::make_pair(ns3::netsimulyzer::Color3(255, 255, 0), ns3::StringValue(netsimulyzer::models::CAR_VALUE)),
-        std::make_pair(ns3::netsimulyzer::Color3(255, 0, 0), ns3::StringValue(netsimulyzer::models::CAR_VALUE)),
-        std::make_pair(ns3::netsimulyzer::Color3(0, 0, 255), ns3::StringValue(netsimulyzer::models::CAR_VALUE)),
-        std::make_pair(ns3::netsimulyzer::Color3(255, 165, 0), ns3::StringValue(netsimulyzer::models::CAR_VALUE)),
-        std::make_pair(ns3::netsimulyzer::Color3(255, 255, 255), ns3::StringValue(netsimulyzer::models::CAR_VALUE)),
-        std::make_pair(ns3::netsimulyzer::Color3(0, 0, 0), ns3::StringValue(netsimulyzer::models::CAR_VALUE)),
-        std::make_pair(ns3::netsimulyzer::Color3(128, 0, 128), ns3::StringValue(netsimulyzer::models::CAR_VALUE))
-    };
-
-    for (size_t i = 1; i < nodeDetails.size(); ++i) { 
-        nodeHelper.Set("Model", nodeDetails[i].second);
-        nodeHelper.Set("HighlightColor", netsimulyzer::OptionalValue<netsimulyzer::Color3>(nodeDetails[i].first));
+    for (int i = 1; i <= 10; ++i) {
+        nodeHelper.Set("Name", StringValue("Node"));  
+        nodeHelper.Set("Model", StringValue(netsimulyzer::models::CAR_VALUE));
+        if (i == closestNodeIndex || i == farthestNodeIndex) {
+            nodeHelper.Set("HighlightColor", netsimulyzer::OptionalValue<netsimulyzer::Color3>(netsimulyzer::Color3(255, 0, 0)));
+        }
         nodeHelper.Install(nodes.Get(i));
     }
 
@@ -132,35 +113,34 @@ int main(int argc, char* argv[])
 
     BuildingsHelper::Install(nodes);
 
-    auto clientThroughput = CreateObject<netsimulyzer::ThroughputSink>(orchestrator, "UDP Echo Client Throughput (TX)");
-    clientThroughput->GetSeries()->SetAttribute("Color", netsimulyzer::BLUE_VALUE);
-    clientThroughput->SetAttribute("Interval", TimeValue(Seconds(1.0)));
+  
+    Ptr<netsimulyzer::ThroughputSink> clientThroughput = CreateObject<netsimulyzer::ThroughputSink>(orchestrator, "UDP Echo Client Throughput (TX)");
+    clientThroughput->SetAttribute("Interval", TimeValue(Seconds(0.1)));
     clientThroughput->SetAttribute("Unit", EnumValue(netsimulyzer::ThroughputSink::Unit::Byte));
     clientThroughput->SetAttribute("TimeUnit", EnumValue(Time::Unit::S));
+    clientThroughput->GetSeries()->SetAttribute("Color", netsimulyzer::BLUE_VALUE);
 
-    clientApp.Get(0u)->TraceConnectWithoutContext("Tx", MakeCallback(&netsimulyzer::ThroughputSink::AddPacket, clientThroughput));
-
-    auto serverThroughput = CreateObject<netsimulyzer::ThroughputSink>(orchestrator, "UDP Echo Server Throughput (RX)");
-    serverThroughput->GetSeries()->SetAttribute("Color", netsimulyzer::RED_VALUE);
+    Ptr<netsimulyzer::ThroughputSink> serverThroughput = CreateObject<netsimulyzer::ThroughputSink>(orchestrator, "UDP Echo Server Throughput (RX)");
+    serverThroughput->SetAttribute("Interval", TimeValue(Seconds(0.1)));
     serverThroughput->SetAttribute("Unit", EnumValue(netsimulyzer::ThroughputSink::Unit::Byte));
     serverThroughput->SetAttribute("TimeUnit", EnumValue(Time::Unit::S));
+    serverThroughput->GetSeries()->SetAttribute("Color", netsimulyzer::RED_VALUE);
 
-    serverApp.Get(0u)->TraceConnectWithoutContext("Rx", MakeCallback(&WriteServerThroughput));
+    clientApp.Get(0)->TraceConnectWithoutContext("Tx", MakeCallback(&netsimulyzer::ThroughputSink::AddPacket, clientThroughput));
+    serverApp.Get(0)->TraceConnectWithoutContext("Rx", MakeCallback(&netsimulyzer::ThroughputSink::AddPacket, serverThroughput));
 
-    auto collection = CreateObject<netsimulyzer::SeriesCollection>(orchestrator);
+    Ptr<netsimulyzer::SeriesCollection> collection = CreateObject<netsimulyzer::SeriesCollection>(orchestrator);
     collection->SetAttribute("Name", StringValue("Client and Server Throughput (TX and RX)"));
     collection->SetAttribute("HideAddedSeries", BooleanValue(false));
-
     collection->Add(clientThroughput->GetSeries());
     collection->Add(serverThroughput->GetSeries());
 
-    NS_LOG_UNCOND("Starting the simulation...");
-    
+    NS_LOG_UNCOND("Starting simulation...");
     Simulator::Stop(duration);
     Simulator::Run();
     Simulator::Destroy();
-    
-    NS_LOG_UNCOND("Simulation completed.");
+    NS_LOG_UNCOND("Simulation complete.");
 }
+
 
 
