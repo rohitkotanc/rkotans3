@@ -167,3 +167,11 @@
 ![](myexamples_gif/ten-car-fifteen-buildings-uav.gif)
 
 ---
+
+# 20. <mark>two-car-uav-traffic.cc</mark>
+
+### <ins>Description</ins>: *This scenario consists of three nodes, two CAR_VALUE and one QUADCOPTER_UAV_VALUE. Using the constant velocity mobility model, the nodes move at a constant speed. There are three graphs. The UDP Echo Car1 Client Throughput (RX) graph shows the connectivity between the first car and the UAV as well as the connectivity between the first car and the second car. The UDP Echo Car2 Client Throughput (RX) graph shows the connectivity between the second car and the UAV as well as the connectivity between the second car and the first car. The UDP Echo Server Throughput (RX) graph shows the server (UAV) communicating with both of the cars. The connectivity of each car graph drops as the cars encounter one of the obstacles and the server connectivity drops when the UAV gets blocked by a building.*
+
+![](myexamples_gif/two-car-uav-traffic.gif)
+
+---
